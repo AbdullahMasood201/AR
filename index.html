@@ -12,7 +12,7 @@
       // ✅ ANDROID → Scene Viewer (Direct AR)
       if (/android/i.test(userAgent)) {
 
-        const modelUrl = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/model.glb";
+        const modelUrl = "https://raw.githubusercontent.com/AbdullahMasood201/AR/main/model.glb";
 
         const intent = `intent://arvr.google.com/scene-viewer/1.0?file=${modelUrl}&mode=ar_only&resizable=true#Intent;scheme=https;package=com.google.ar.core;end;`;
 
@@ -22,7 +22,7 @@
       // ✅ iPHONE → Quick Look (Direct AR)
       else if (/iPhone|iPad/i.test(userAgent)) {
 
-        const usdzUrl = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/model.usdz";
+        const usdzUrl = "https://raw.githubusercontent.com/AbdullahMasood201/AR/main/model.usdc";
 
         window.location.href = usdzUrl;
       }
