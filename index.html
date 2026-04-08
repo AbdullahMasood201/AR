@@ -1,64 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Crawfish AR Experience</title>
-
-  <!-- Model Viewer -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <title>AR Menu</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #000;
-      color: white;
+      color: #fff;
       text-align: center;
     }
 
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      z-index: 999;
+    }
+
     h1 {
-      margin: 15px;
+      padding: 20px;
       font-size: 24px;
     }
 
-    model-viewer {
-      width: 100%;
-      height: 80vh;
-      background: #111;
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,0,0,0.2);
     }
 
     .btn {
       display: inline-block;
-      margin: 15px;
-      padding: 12px 20px;
-      background: #ff4d4d;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: #ff3c3c;
       color: white;
       border-radius: 8px;
-      font-size: 16px;
       text-decoration: none;
     }
   </style>
+
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 800);
+    };
+  </script>
+
 </head>
 
 <body>
 
-  <h1>🦞 Crawfish - View in AR</h1>
+<div id="loader">Loading AR Menu...</div>
 
-  <model-viewer 
-    src="model.glb"
-    ios-src="model.usdz"
-    alt="Crawfish 3D Model"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    exposure="1"
-    environment-image="neutral"
-    style="--poster-color: transparent;">
-  </model-viewer>
+<h1>🍽️ Experience Our Products in AR</h1>
 
-  <p>Tap the AR button to place the product in your space</p>
+<div class="container">
+
+  <div class="card">
+    <h2>🦞 Crawfish</h2>
+    <p>View this product in real-world AR</p>
+    <a href="crawfish.html" class="btn">View in AR</a>
+  </div>
+
+  <div class="card">
+    <h2>🍔 Burger</h2>
+    <p>Coming soon in AR</p>
+    <a href="burger.html" class="btn">Coming Soon</a>
+  </div>
+
+  <div class="card">
+    <h2>🍕 Pizza</h2>
+    <p>Coming soon in AR</p>
+    <a href="pizza.html" class="btn">Coming Soon</a>
+  </div>
+
+</div>
 
 </body>
 </html>
