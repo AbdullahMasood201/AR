@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>AR Experience</title>
+  <meta charset="UTF-8">
+  <title>Crawfish AR Experience</title>
 
-  <script>
-    function openAR() {
+  <!-- Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-      var userAgent = navigator.userAgent || navigator.vendor;
-
-      // ✅ ANDROID → Scene Viewer (Direct AR)
-      if (/android/i.test(userAgent)) {
-
-        const modelUrl = "https://raw.githubusercontent.com/AbdullahMasood201/AR/main/model.glb";
-
-        const intent = `intent://arvr.google.com/scene-viewer/1.0?file=${modelUrl}&mode=ar_only&resizable=true#Intent;scheme=https;package=com.google.ar.core;end;`;
-
-        window.location.href = intent;
-      }
-
-      // ✅ iPHONE → Quick Look (Direct AR)
-      else if (/iPhone|iPad/i.test(userAgent)) {
-
-        const usdzUrl = "https://raw.githubusercontent.com/AbdullahMasood201/AR/main/model.usdz";
-
-        window.location.href = usdzUrl;
-      }
-
-      // 💻 Desktop fallback
-      else {
-        document.body.innerHTML = "<h2>📱 Open this link on mobile to view in AR</h2>";
-      }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+      text-align: center;
     }
-  </script>
+
+    h1 {
+      margin: 15px;
+      font-size: 24px;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 80vh;
+      background: #111;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 12px 20px;
+      background: #ff4d4d;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
-<body onload="openAR()" style="margin:0;">
+<body>
+
+  <h1>🦞 Crawfish - View in AR</h1>
+
+  <model-viewer 
+    src="model.glb"
+    ios-src="model.usdz"
+    alt="Crawfish 3D Model"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    exposure="1"
+    environment-image="neutral"
+    style="--poster-color: transparent;">
+  </model-viewer>
+
+  <p>Tap the AR button to place the product in your space</p>
+
 </body>
 </html>
