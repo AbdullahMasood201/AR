@@ -26,53 +26,65 @@
       z-index: 999;
     }
 
-    h1 {
-      margin: 10px;
-    }
-
     model-viewer {
       width: 100%;
-      height: 75vh;
+      height: 65vh;
+    }
+
+    .btn-ar {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 25px;
+      background: #ff3c3c;
+      color: white;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
     }
 
     .back {
-      display: inline-block;
-      margin: 10px;
+      display: block;
+      margin-top: 10px;
       color: red;
       text-decoration: none;
     }
   </style>
 
-  <script>
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
-      }, 1000);
-    };
-  </script>
-
 </head>
 
 <body>
 
-<div id="loader">Preparing AR Experience...</div>
-
-<a href="index.html" class="back">← Back</a>
+<div id="loader">Preparing AR...</div>
 
 <h1>🦞 Crawfish</h1>
 
 <model-viewer 
+  id="model"
   src="model.glb"
   ios-src="model.usdz"
   ar
   ar-modes="scene-viewer webxr quick-look"
   camera-controls
-  auto-rotate
-  shadow-intensity="1"
-  exposure="1">
+  auto-rotate>
 </model-viewer>
 
-<p>Tap the AR button to place it in your space</p>
+<!-- BIG AR BUTTON -->
+<button class="btn-ar" onclick="openAR()">🚀 View in Your Space</button>
+
+<a href="index.html" class="back">← Back</a>
+
+<script>
+  window.onload = () => {
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+    }, 800);
+  };
+
+  function openAR() {
+    document.getElementById("model").activateAR();
+  }
+</script>
 
 </body>
 </html>
